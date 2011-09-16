@@ -1,4 +1,11 @@
-from tracker.models import Goal
+from tracker.models import *
 from django.contrib import admin
 
-admin.site.register(Goal)
+admin.site.register(Service)
+admin.site.register(Interaction)
+admin.site.register(Contact)
+admin.site.register(ContactAccount)
+admin.site.register(UserAccount)
+admin.site.register(Medium)
+admin.site.register(Reminder)
+admin.site.register(UserProfile)
