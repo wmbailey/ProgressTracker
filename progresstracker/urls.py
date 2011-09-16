@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'progresstracker.views.home', name='home'),
+     url(r'^$', 'tracker.views.index', name='index'),
     # url(r'^progresstracker/', include('progresstracker.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

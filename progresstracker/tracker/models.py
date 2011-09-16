@@ -10,7 +10,7 @@ class Medium(models.Model):
 		return self.name
 
 class Reminder(models.Model):
-	timespan = models.IntegerField()
+	timespan = models.CharField(max_length=200)
 	active = models.BooleanField()
 
 	def __unicode__(self):
@@ -34,22 +34,17 @@ class ContactAccount(models.Model):
 	service = models.ForeignKey(Service)
 	contact = models.ForeignKey(Contact)
 	name = models.CharField(max_length=200)
-	reminder = models.ForeignKey(Reminder)
+	user_name = models.CharField(max_length=50)
 
 	def __unicode__(self):
 		return self.name
-
-class UserProfile(models.Model):
-	 user = models.OneToOneField(User)
-
-	 def __unicode__(self):
-		return self.user
 
 class UserAccount(models.Model):
 	service = models.ForeignKey(Service)
 	description = models.TextField()
 	name = models.CharField(max_length=200)
-	user_profile = models.ForeignKey(UserProfile)
+	user = models.ForeignKey(User)
+	user_name = models.CharField(max_length=50)
 
 	def __unicode__(self):
 		return self.name
@@ -59,6 +54,15 @@ class Interaction(models.Model):
 	reminder = models.ForeignKey(Reminder)
 	contact_accounts = models.ManyToManyField(ContactAccount,blank=True, null=True)
 	duration = models.IntegerField()
+	interaction_type = models.CharField(max_length=50)
 
 	def __unicode__(self):
 		return self.thread
+
+class Relationship(models.Model):
+	interactions = models.ManyToManyField(Interaction, blank=True, null=True)
+	relationship_type = models.CharField(max_length=50)
+	user_profile = models.ForeignKey(User)
+
+	def __unicode__(self):
+		return self.relationship_type
