@@ -1,3 +1,4 @@
+import os
 # Django settings for progresstracker project.
 
 DEBUG = True
@@ -108,6 +109,13 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.contrib.linkedin.LinkedinBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,8 +128,20 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'tracker',
-    #'social_auth',
+    'django_extensions',
+    'social_auth',
 )
+
+TWITTER_CONSUMER_KEY = 'R7XyaPSXuEmGFFVsZbNzqQ'
+TWITTER_CONSUMER_SECRET = 'GEx88ay6mDaSLJb1H1KI5qky7vWBSNkzif5ZTxbJg'
+
+if os.environ.has_key('FACEBOOK_APP_ID'):
+    FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
+if os.environ.has_key('FACEBOOK_API_SECRET'):
+    FACEBOOK_API_SECRET = os.environ['FACEBOOK_API_SECRET']
+
+LINKEDIN_CONSUMER_KEY = 'p5gzoudy0wgq'
+LINKEDIN_CONSUMER_SECRET = 'cg0v3bV0cEeoT4PA'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
