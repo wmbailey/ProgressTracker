@@ -6,8 +6,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-     url(r'^$', 'tracker.views.index', name='index'),
-    # url(r'^progresstracker/', include('progresstracker.foo.urls')),
+    url(r'^$', 'tracker.views.index', name='index'),
+    url(r'', include('social_auth.urls')),
+    url(r'^facebook/', 'tracker.views.facebook', name='facebook'),
+    url(r'^logout/$', 'tracker.views.user_logout', name='user_logout'),
+    # url(r'^app/', include('app.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

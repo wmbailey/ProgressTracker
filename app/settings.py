@@ -1,5 +1,5 @@
 import os
-# Django settings for progresstracker project.
+# Django settings for app project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -101,7 +101,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'progresstracker.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -132,13 +132,16 @@ INSTALLED_APPS = (
     'social_auth',
 )
 
+LOGIN_URL          = '/login-form/'
+LOGIN_REDIRECT_URL = '/logged-in/'
+LOGIN_ERROR_URL    = '/login-error/'
+
 TWITTER_CONSUMER_KEY = 'R7XyaPSXuEmGFFVsZbNzqQ'
 TWITTER_CONSUMER_SECRET = 'GEx88ay6mDaSLJb1H1KI5qky7vWBSNkzif5ZTxbJg'
 
-if os.environ.has_key('FACEBOOK_APP_ID'):
-    FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
-if os.environ.has_key('FACEBOOK_API_SECRET'):
-    FACEBOOK_API_SECRET = os.environ['FACEBOOK_API_SECRET']
+FACEBOOK_APP_ID = os.environ.get('FACEBOOK_APP_ID','224439660948300')
+FACEBOOK_API_SECRET = os.environ.get('FACEBOOK_API_SECRET','abab10774f98c68a6000e9a9631d9baa')
+FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions','user_likes','user_photos','user_photo_video_tags', 'read_mailbox']
 
 LINKEDIN_CONSUMER_KEY = 'p5gzoudy0wgq'
 LINKEDIN_CONSUMER_SECRET = 'cg0v3bV0cEeoT4PA'
