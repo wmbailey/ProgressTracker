@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import logout, login, authenticate
 from django.utils import simplejson
 from django.core.context_processors import csrf
+from django.contrib.messages.api import get_messages
 from social_auth.models import *
 import urllib, urllib2
 import operator
@@ -37,7 +38,9 @@ def facebook_messages(user):
 
 def login_error(request):
     c = RequestContext(request, {})
-    print request
+    for msg in get_messages(request):
+        print msg.message
+        print msg.extra_tags
     return render_to_response('login.html',c)
 
 
