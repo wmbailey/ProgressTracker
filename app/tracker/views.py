@@ -20,9 +20,18 @@ def index(request):
     c = RequestContext(request, {})
     return render_to_response('login.html', c)
 
-def facebook(request):
+def user_profile(request):
     c = RequestContext(request, {})
-    return render_to_response('login.html', c)
+    try:
+        fb_user = UserSocialAuth.objects.get(user=request.user, provider='facebook')
+        FB_URL = 'https://graph.facebook.com/%s'
+        url = FB_URL % ('me/friends?access_token=%s' % fb_user.extra_data['access_token'])
+        friends = json.loads(urllib2.urlopen(url).read())
+        c['friends'] = friends
+    except:
+        print "Unexpected error:", sys.exc_info()
+        pass
+    return render_to_response('profile.html', c)
 
 def facebook_messages(user):
     fb_user = UserSocialAuth.objects.get(user=user, provider='facebook')
@@ -30,7 +39,6 @@ def facebook_messages(user):
     url = FB_URL % ('me/inbox?access_token=%s&limit=11' % fb_user.extra_data['access_token'])
     likes = json.loads(urllib2.urlopen(url).read())
     print likes
-
 
 def user_logout(request):
     logout(request)

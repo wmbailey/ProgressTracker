@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+<div class="row">
+	<div class="span12">
+        <ul class="friends">{% for friend in friends.data %}
+        <li>
+          <a href="#" onclick="window.open('http://www.facebook.com/{{friend.id}}')">
+            <img src="https://graph.facebook.com/{{friend.id}}/picture" alt="{{friend.name}}">
+            {{friend.name}}
+          </a>
+		  </li>{% endfor %}</ul>
+	  </div>
+	</div>
+	<br/>
+	<a href="/logout/">Logout</a>
+</div>
+{% endblock %}
+

@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -8,8 +9,9 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'tracker.views.index', name='index'),
     url(r'', include('social_auth.urls')),
-    url(r'^facebook/', 'tracker.views.facebook', name='facebook'),
+    url(r'^facebook/', 'tracker.views.user_profile', name='user_profile'),
     url(r'^logout/$', 'tracker.views.user_logout', name='user_logout'),
+    url(r'^site_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     # url(r'^app/', include('app.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

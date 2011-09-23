@@ -1,15 +1,16 @@
-<html>
-	<head>
-	</head>
-	<body>
-	<div>
+{% extends 'base.html' %}
+{% block body %}
+<div class="row">
+<br/></div>
+<div class="row">
+</div>
+	<div class="row">
 		Login with:<br/>
 		<a href="/login/twitter/">Twitter</a> | 
 		<a href="/login/facebook/">Facebook</a> | 
 		<a href="/login/linkedin/">LinkedIn</a>
 	</div>
-	<br/>
+	<div class="row">
 	<a href="/logout/">Logout</a>
-</body>
-</html>
-
+	</div>
+{% endblock %}
