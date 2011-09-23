@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^facebook/', 'tracker.views.facebook', name='facebook'),
     url(r'^google/', 'tracker.views.google', name='google'),
     url(r'^logout/$', 'tracker.views.user_logout', name='user_logout'),
+    url(r'^login-error/$', 'tracker.views.login_error', name='login_error'),
     # url(r'^app/', include('app.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

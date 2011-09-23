@@ -35,6 +35,11 @@ def facebook_messages(user):
     likes = json.loads(urllib2.urlopen(url).read())
     print likes
 
+def login_error(request):
+    c = RequestContext(request, {})
+    print request
+    return render_to_response('login.html',c)
+
 
 def user_logout(request):
     logout(request)
