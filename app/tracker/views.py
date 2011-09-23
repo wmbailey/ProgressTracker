@@ -24,6 +24,10 @@ def facebook(request):
     c = RequestContext(request, {})
     return render_to_response('login.html', c)
 
+def google(request):
+    c = RequestContext(request, {})
+    return render_to_response('login.html', c)
+
 def facebook_messages(user):
     fb_user = UserSocialAuth.objects.get(user=user, provider='facebook')
     FB_URL = 'https://graph.facebook.com/%s'

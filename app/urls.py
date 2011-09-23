@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', 'tracker.views.index', name='index'),
     url(r'', include('social_auth.urls')),
     url(r'^facebook/', 'tracker.views.facebook', name='facebook'),
+    url(r'^google/', 'tracker.views.google', name='google'),
     url(r'^logout/$', 'tracker.views.user_logout', name='user_logout'),
     # url(r'^app/', include('app.foo.urls')),
 
