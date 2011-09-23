@@ -112,6 +112,8 @@ TEMPLATE_DIRS = (
 
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.google.GoogleOAuthBackend',
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'social_auth.backends.google.GoogleBackend',
     'social_auth.backends.twitter.TwitterBackend',
     'social_auth.backends.facebook.FacebookBackend',
     'social_auth.backends.contrib.linkedin.LinkedinBackend',
@@ -135,7 +137,6 @@ INSTALLED_APPS = (
 )
 
 LOGIN_URL          = '/login-form/'
-LOGIN_REDIRECT_URL = '/logged-in/'
 LOGIN_ERROR_URL    = '/login-error/'
 
 TWITTER_CONSUMER_KEY = 'R7XyaPSXuEmGFFVsZbNzqQ'
@@ -147,6 +148,9 @@ FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions','user_likes','user_photos','u
 
 LINKEDIN_CONSUMER_KEY = 'p5gzoudy0wgq'
 LINKEDIN_CONSUMER_SECRET = 'cg0v3bV0cEeoT4PA'
+
+GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('GOOGLE_OAUTH2_CLIENT_ID','1027849145619@developer.gserviceaccount.com')
+GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get('GOOGLE_OAUTH2_CLIENT_SECRET','3WgQpYUSLZVtZmKawG40oFg1')
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
