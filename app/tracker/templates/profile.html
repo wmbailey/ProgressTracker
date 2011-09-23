@@ -1,19 +1,73 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="container">
 <div class="row">
-	<div class="span12">
-        <ul class="friends">{% for friend in friends.data %}
-        <li>
-          <a href="#" onclick="window.open('http://www.facebook.com/{{friend.id}}')">
-            <img src="https://graph.facebook.com/{{friend.id}}/picture" alt="{{friend.name}}">
-            {{friend.name}}
-          </a>
-		  </li>{% endfor %}</ul>
-	  </div>
+	<div class="span10">
+		<table class="zebra-striped">
+			<tr>
+				<th>From</th>
+				<th>Message</th>
+				<th>Date</th>
+			</tr>
+			{% for m in messages.data %}
+			<tr>
+				<td>{{m.from.name}}</td>
+				<td>{{m.message}}</td>
+				<td>{{m.data.created_time}}</td>
+			</tr>
+			{% endfor %}
+		</table>
 	</div>
-	<br/>
-	<a href="/logout/">Logout</a>
+	<div class="well span4">
+		<h3>Setup new contact</h3>
+		<br/>
+		<input class="large" id="project" name="xlInput" size="30" type="text">
+		<img id="project-icon" src="{{SITE_MEDIA}}images/transparent_1x1.png" class="ui-state-default"/>
+		<button class="btn info" onclick="add_contact();">Add Contact</button>
+		<input type="hidden" id="project-id"/>	</div>
 </div>
+<script>
+$(function() {
+	var projects = [
+	{% for friend in friends.data %}
+	{
+		value: "{{friend.id}}",
+		label: "{{friend.name}}",
+		icon: "https://graph.facebook.com/{{friend.id}}/picture"
+	},	
+	{% endfor %}
+	];
+
+	$( "#project" ).autocomplete({
+		minLength: 0,
+		source: projects,
+		focus: function( event, ui ) {
+			$( "#project" ).val( ui.item.label );
+			return false;
+		},
+		select: function( event, ui ) {
+			$( "#project" ).val( ui.item.label );
+			$( "#project-id" ).val( ui.item.value );
+			$( "#project-icon" ).attr( "src", ui.item.icon );
+
+			return false;
+		}
+	})
+	.data( "autocomplete" )._renderItem = function( ul, item ) {
+		return $( "<li></li>" )
+			.data( "item.autocomplete", item )
+			.append( "<a>" + item.label + "<br></a>" )
+			.appendTo( ul );
+	};
+});
+
+function add_contact (){
+		var data = {userid: $('#project-id').val()};
+		$.getJSON('/profile/contact/add.json', data, function(data) {
+			$('#project').val('');
+		});
+}
+
+</script>
+	
 {% endblock %}
 

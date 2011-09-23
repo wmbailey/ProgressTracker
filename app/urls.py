@@ -7,18 +7,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'tracker.views.index', name='index'),
     url(r'', include('social_auth.urls')),
-    url(r'^accounts/profile/', 'tracker.views.user_profile', name='user_profile'),
-    url(r'^logout/$', 'tracker.views.user_logout', name='user_logout'),
     url(r'^site_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
-    url(r'^google/', 'tracker.views.google', name='google'),
     url(r'^login-error/$', 'tracker.views.login_error', name='login_error'),
-    # url(r'^app/', include('app.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
+    url(r'', include('app.tracker.urls')),    
+    
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
