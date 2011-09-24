@@ -34,4 +34,20 @@ def facebook_user(request, user):
 def load_data():
     for user in UserSocialAuth.objects.filter(provider='facebook'):
         facebook_messages(user)
+
+def google_messages(user):
+    google_user = UserSocialAuth.objects.get(user=user, provider='google')
+    url = 'https://mail.google.com/mail/b/will@startedby.com/imap/'
+
+    conn = imaplib.IMAP4_SSL('imap.googlemail.com')
+    conn.debug = 4 
+
+    # This is the only thing in the API for impaplib.IMAP4_SSL that has 
+    # changed. You now authenticate with the URL, consumer, and token.
+    conn.authenticate(url, consumer, token)
+
+    # Once authenticated everything from the impalib.IMAP4_SSL class will 
+    # work as per usual without any modification to your code.
+    conn.select('INBOX')
+    print conn.list()
         
