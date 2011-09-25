@@ -39,15 +39,11 @@ def google_messages(user):
     google_user = UserSocialAuth.objects.get(user=user, provider='google')
     url = 'https://mail.google.com/mail/b/will@startedby.com/imap/'
 
-    conn = imaplib.IMAP4_SSL('imap.googlemail.com')
-    conn.debug = 4 
+    imap_conn = imaplib.IMAP4_SSL(url)
+    imap_conn.debug = 4
+    imap_conn.authenticate('XOAUTH', lambda x: xoauth_string)
+    imap_conn.select('INBOX')
 
-    # This is the only thing in the API for impaplib.IMAP4_SSL that has 
-    # changed. You now authenticate with the URL, consumer, and token.
-    conn.authenticate(url, consumer, token)
-
-    # Once authenticated everything from the impalib.IMAP4_SSL class will 
-    # work as per usual without any modification to your code.
-    conn.select('INBOX')
-    print conn.list()
+def google_contacts(user):
+    google_user = UserSocialAuth.objects.get(user=user, provider='google')
         

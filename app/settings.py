@@ -149,8 +149,10 @@ FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions','user_likes','user_photos','u
 LINKEDIN_CONSUMER_KEY = 'p5gzoudy0wgq'
 LINKEDIN_CONSUMER_SECRET = 'cg0v3bV0cEeoT4PA'
 
-GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('GOOGLE_OAUTH2_CLIENT_ID','1027849145619@developer.gserviceaccount.com')
-GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get('GOOGLE_OAUTH2_CLIENT_SECRET','3WgQpYUSLZVtZmKawG40oFg1')
+#GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('GOOGLE_OAUTH2_CLIENT_ID','1027849145619@developer.gserviceaccount.com')
+#GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get('GOOGLE_OAUTH2_CLIENT_SECRET','3WgQpYUSLZVtZmKawG40oFg1')
+GOOGLE_OAUTH_EXTRA_SCOPE = ['https://www.google.com/m8/feeds']
+GOOGLE_DISPLAY_NAME = 'Blah Blah'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
