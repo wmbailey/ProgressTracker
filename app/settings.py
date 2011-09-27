@@ -144,7 +144,7 @@ TWITTER_CONSUMER_SECRET = 'GEx88ay6mDaSLJb1H1KI5qky7vWBSNkzif5ZTxbJg'
 
 FACEBOOK_APP_ID = os.environ.get('FACEBOOK_APP_ID','224439660948300')
 FACEBOOK_API_SECRET = os.environ.get('FACEBOOK_API_SECRET','abab10774f98c68a6000e9a9631d9baa')
-FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions','user_likes','user_photos','user_photo_video_tags', 'read_mailbox']
+FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions','user_likes','user_photos','user_photo_video_tags', 'read_mailbox','offline_access']
 
 LINKEDIN_CONSUMER_KEY = 'p5gzoudy0wgq'
 LINKEDIN_CONSUMER_SECRET = 'cg0v3bV0cEeoT4PA'
