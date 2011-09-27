@@ -34,4 +34,16 @@ def facebook_user(request, user):
 def load_data():
     for user in UserSocialAuth.objects.filter(provider='facebook'):
         facebook_messages(user)
+
+def google_messages(user):
+    google_user = UserSocialAuth.objects.get(user=user, provider='google')
+    url = 'https://mail.google.com/mail/b/will@startedby.com/imap/'
+
+    imap_conn = imaplib.IMAP4_SSL(url)
+    imap_conn.debug = 4
+    imap_conn.authenticate('XOAUTH', lambda x: xoauth_string)
+    imap_conn.select('INBOX')
+
+def google_contacts(user):
+    google_user = UserSocialAuth.objects.get(user=user, provider='google')
         
