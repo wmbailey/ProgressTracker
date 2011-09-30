@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'', include('social_auth.urls')),
     url(r'^site_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     url(r'^login-error/$', 'tracker.views.login_error', name='login_error'),
+    url(r'^google/', include('app.google.urls')),
     url(r'', include('app.tracker.urls')),    
     
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

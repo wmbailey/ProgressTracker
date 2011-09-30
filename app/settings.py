@@ -127,10 +127,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
      'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'google',
     'tracker',
     'django_extensions',
     'social_auth',
@@ -176,3 +175,14 @@ LOGGING = {
         },
     }
 }
+
+SITE_NAME = 'sign_in_with_google'
+
+#set your domain
+DOMAIN = 'http://127.0.0.1:8000'
+
+#Get your keys at https://code.google.com/apis/console/
+GOOGLE_API_KEY = 'AIzaSyBQ0i79QHJkT-smYn5TWljtSp9G_rLbx_U'
+GOOGLE_CLIENT_ID = '1027849145619.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET = '3WgQpYUSLZVtZmKawG40oFg1'
+
